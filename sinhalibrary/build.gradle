@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+
+def globalConf = rootProject.ext
+
+android {
+    compileSdkVersion globalConf.androidTargetSdkVersion
+    buildToolsVersion globalConf.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion globalConf.androidMinSdkVersion
+        targetSdkVersion globalConf.androidTargetSdkVersion
+        versionCode 1
+        versionName "0.0.0.0"
+    }
+
+    buildTypes {
+        release {
+            multiDexEnabled false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            multiDexEnabled true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
+}
+
+dependencies {
+    Map<String, String> dependencies = globalConf.dependencies
+
+    // It gives support to work higher end component in lower end
+    compile dependencies.appcompat
+
+    // To compat for new material designs
+    compile dependencies.design
+
+    // To parse the json output using the Jackson parser
+    compile dependencies.converterJackson
+
+    // To download and cache the data's from the server
+    compile dependencies.volleyLibrary
+
+    // To log all the request and response which is happened through okhttp
+    compile dependencies.loggingInterceptor
+}

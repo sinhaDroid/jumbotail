@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+def globalConf = rootProject.ext
+
+android {
+    compileSdkVersion globalConf.androidTargetSdkVersion
+    buildToolsVersion globalConf.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion globalConf.androidMinSdkVersion
+        targetSdkVersion globalConf.androidTargetSdkVersion
+        versionCode VersionCodeReader.getVersionCode()
+        versionName globalConf.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    productFlavors {
+        stage {
+            applicationId globalConf.androidApplicationIdStage
+            buildConfigField("String", "API_KEY", "\"http://54.169.234.17:8083\"")
+        }
+        production {
+            applicationId globalConf.androidApplicationIdProduction
+            buildConfigField("String", "API_KEY", "\"http://54.169.234.17:8083\"")
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
+}
+
+dependencies {
+    compile project(':sinhalibrary')
+
+    Map<String, String> dependencies = globalConf.dependencies;
+
+    // butterknife for view
+    compile dependencies.butterknife
+    annotationProcessor dependencies.butterknifeCompiler
+
+    //support libraries
+    compile dependencies.cardview
+    compile dependencies.recyclerview
+
+    // To use parcelable instead serializable to improve data transfer between components
+//    apt dependencies.parceler
+    compile dependencies.parcelerApi
+
+    // TODO: place in dependencies
+    // To show smooth progressbar while loading
+    compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0'
+
+    // To handle 65k method issue
+    compile dependencies.multidex
+
+    // UI Testing
+    testCompile dependencies.junit
+    androidTestCompile(dependencies.espressoCore, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+}
+
+class VersionCodeReader {
+    static def getVersionCode() {
+        def defaultVersion = 1
+        def code = System.env.BUILD_NUMBER != null ? Integer.parseInt(System.env.BUILD_NUMBER) : defaultVersion
+        println code == defaultVersion ? "BUILD_NUMBER not found. Falling back to default version code:$defaultVersion" : "VersionCode is set to $code"
+        return code
+    }
+}
