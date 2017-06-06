@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/weather_background_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/blur_background_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#19000000" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/main_srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/weather_nsv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_16">
+
+                <include layout="@layout/inflater_head_row" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_2"
+                    android:background="@color/split_light" />
+
+                <com.sinha.android.widgets.customfont.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:text="@string/hourly"
+                    android:textColor="@color/wallet_dim_foreground_holo_dark"
+                    android:textSize="@dimen/sp_14"
+                    app:typeface="roboto" />
+
+                <FrameLayout
+                    android:id="@+id/hourly_fl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/weather_info_dark_bg"
+                    android:paddingLeft="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_8">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/hourly_rcv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_8" />
+                </FrameLayout>
+
+                <com.sinha.android.widgets.customfont.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:text="@string/daily"
+                    android:textColor="@color/wallet_dim_foreground_holo_dark"
+                    android:textSize="@dimen/sp_14"
+                    app:typeface="roboto" />
+
+                <RelativeLayout
+                    android:id="@+id/daily_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/weather_info_dark_bg"
+                    android:paddingLeft="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_8">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/daily_rcv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_8" />
+
+                    <com.github.mikephil.charting.charts.CombinedChart
+                        android:id="@+id/daily_hltv"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_360"
+                        android:layout_below="@+id/daily_rcv"
+                        android:layout_marginBottom="@dimen/dp_16" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_2"
+                    android:background="@color/split_light" />
+
+                <com.sinha.android.widgets.customfont.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:text="@string/details"
+                    android:textColor="@color/wallet_dim_foreground_holo_dark"
+                    android:textSize="@dimen/sp_14"
+                    app:typeface="roboto" />
+
+                <include layout="@layout/inflater_weather_details" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_2"
+                    android:background="@color/split_light" />
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>

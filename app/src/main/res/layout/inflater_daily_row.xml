@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/day_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Today"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            app:typeface="roboto_medium" />
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_weight="1.5"
+            android:text="6/03"
+            android:textColor="@color/wallet_dim_foreground_holo_dark"
+            android:textSize="@dimen/sp_8"
+            app:typeface="roboto" />
+
+        <ImageView
+            android:id="@+id/daily_icon_iv"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_weight="1.5"
+            app:srcCompat="@drawable/menu_life_press" />
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/daily_desc_tv"
+            android:layout_width="@dimen/dp_64"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:maxLines="2"
+            android:text="a shower or thunderstorm"
+            android:textColor="@color/wallet_dim_foreground_holo_dark"
+            android:textSize="@dimen/sp_14"
+            app:typeface="roboto" />
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/min_max_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="right"
+            android:text="31&#xb0;/21&#xb0;"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            app:typeface="roboto_medium" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/wallet_dim_foreground_holo_dark" />
+</LinearLayout>

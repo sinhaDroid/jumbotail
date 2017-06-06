@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by Jeeva on 16/10/14.
+ * Created by Sinha on 16/10/14.
  */
 public abstract class BaseDialogFragment extends DialogFragment {
 

@@ -16,7 +16,7 @@ import java.util.List;
 
 
 /**
- * Created by Jeeva on 16/10/14.
+ * Created by Sinha on 16/10/14.
  */
 public class BaseActivity extends AppCompatActivity implements com.sinha.android.View {
 

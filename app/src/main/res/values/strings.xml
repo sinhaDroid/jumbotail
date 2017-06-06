@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">JumboTail</string>
+    <string name="app_name">Mausam</string>
+    <string name="play_store_url"><![CDATA[https://play.google.com/store/apps/details?id=only.sinha.android.mausam.app&hl=en]]></string>
+    <string name="hourly">Hourly</string>
+    <string name="daily">Daily</string>
+    <string name="feels_like">Feels Like</string>
+    <string name="wind">Wind</string>
+    <string name="pressure">Pressure</string>
+    <string name="visibility">Visibility</string>
+    <string name="precipitation">Precipitation</string>
+    <string name="humidity">Humidity</string>
+    <string name="sunrise">sunrise</string>
+    <string name="sunset">sunset</string>
+    <string name="details">Details</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

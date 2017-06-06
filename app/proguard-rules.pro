@@ -23,3 +23,31 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#Start Dto#
+-keep public class only.sinha.android.mausam.app.module.model.** {
+  *;
+}
+#End Dto#
+
+#Start Jackson#
+-dontwarn org.w3c.dom.bootstrap.DOMImplementationRegistry
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+-keepnames class com.fasterxml.jackson.** { *; }
+-keepattributes *Annotation*,EnclosingMethod,Signature
+-dontwarn java.beans.Transient
+-dontwarn java.beans.ConstructorProperties
+#End Jackson#
+
+#Start Okhttp#
+-dontwarn java.nio.file.**
+-dontwarn java.lang.invoke.**
+-dontwarn java.lang.reflect.Method
+#End Okhttp#
+
+#Start Retrofit#
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+#End Retrofit#

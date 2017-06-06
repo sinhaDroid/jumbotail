@@ -2,12 +2,11 @@ package com.sinha.android;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
 /**
- * Created by Jeeva on 16/10/14.
+ * Created by Sinha on 16/10/14.
  */
 public interface View {
 

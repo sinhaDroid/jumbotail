@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detail_ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/weather_info_dark_bg"
+        android:gravity="center"
+        android:padding="@dimen/dp_8"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16">
+
+        <ImageView
+            android:id="@+id/sunrise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/sunrise"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/weather_detail_sun_rise" />
+
+        <only.sinha.android.mausam.app.module.common.widget.SunRiseSetView
+            android:id="@+id/sunrise_graph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@+id/sunrise"
+            android:layout_toLeftOf="@+id/sunset"
+            android:layout_toRightOf="@+id/sunrise"
+            android:layout_toStartOf="@+id/sunset" />
+
+        <ImageView
+            android:id="@+id/sunset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/sunset"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/weather_detail_sun_set" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/weather_info_dark_bg"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_16">
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/detail_sunrise_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/detail_sunset_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
+        android:background="@color/wallet_dim_foreground_holo_dark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/weather_info_dark_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8">
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/weather_detail_wind"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableStart="@mipmap/weather_detail_wind"
+            android:gravity="start|center"
+            android:text="@string/wind"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/detail_wind_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
+        android:background="@color/wallet_dim_foreground_holo_dark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/weather_info_dark_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8">
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/weather_detail_temperature"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableStart="@mipmap/weather_detail_temperature"
+            android:gravity="start|center"
+            android:text="@string/feels_like"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/detail_feels_like_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
+        android:background="@color/wallet_dim_foreground_holo_dark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/weather_info_dark_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8">
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/weather_detail_pressure"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableStart="@mipmap/weather_detail_pressure"
+            android:gravity="start|center"
+            android:text="@string/pressure"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/detail_pressure_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
+        android:background="@color/wallet_dim_foreground_holo_dark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/weather_info_dark_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8">
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/weather_detail_visibility"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableStart="@mipmap/weather_detail_visibility"
+            android:gravity="start|center"
+            android:text="@string/visibility"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/detail_visibility_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
+        android:background="@color/wallet_dim_foreground_holo_dark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/weather_info_dark_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8">
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/weather_detail_precipitation_probability"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableStart="@mipmap/weather_detail_precipitation_probability"
+            android:gravity="start|center"
+            android:text="@string/precipitation"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/detail_precipitation_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
+        android:background="@color/wallet_dim_foreground_holo_dark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/weather_info_dark_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8">
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/weather_detail_humidity"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableStart="@mipmap/weather_detail_humidity"
+            android:gravity="start|center"
+            android:text="@string/humidity"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+
+        <com.sinha.android.widgets.customfont.CustomTextView
+            android:id="@+id/detail_humidity_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:typeface="helveticaNeue_thin" />
+    </LinearLayout>
+</LinearLayout>

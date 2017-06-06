@@ -14,7 +14,7 @@ import retrofit2.Converter;
 import retrofit2.Retrofit;
 
 /**
- * Created by Jeeva on 28/3/16.
+ * Created by Sinha on 28/3/16.
  */
 public class JacksonConverterFactory extends Converter.Factory {
 

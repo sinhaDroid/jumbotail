@@ -10,7 +10,7 @@ import com.android.volley.toolbox.ImageLoader;
 
 public class Volley {
 
-    public static final String TAG = Volley.class.getSimpleName();
+    private static final String TAG = Volley.class.getSimpleName();
 
     private RequestQueue mRequestQueue;
 
@@ -26,7 +26,7 @@ public class Volley {
         mRequestQueue = com.android.volley.toolbox.Volley.newRequestQueue(context);
     }
 
-    public RequestQueue getRequestQueue() {
+    private RequestQueue getRequestQueue() {
         return mRequestQueue;
     }
 

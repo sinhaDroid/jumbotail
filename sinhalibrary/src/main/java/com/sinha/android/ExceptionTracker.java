@@ -1,7 +1,7 @@
 package com.sinha.android;
 
 /**
- * Created by Jeeva on 7/1/15.
+ * Created by Sinha on 7/1/15.
  */
 public class ExceptionTracker {
 

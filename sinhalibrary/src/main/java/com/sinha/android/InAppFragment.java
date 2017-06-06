@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
- * Created by Jeeva on 3/8/15.
+ * Created by Sinha on 3/8/15.
  */
 public class InAppFragment extends BaseFragment {
 

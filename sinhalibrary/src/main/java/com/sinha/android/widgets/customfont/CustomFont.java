@@ -22,7 +22,7 @@ public class CustomFont {
         this.mFontPaths = fontPaths;
     }
 
-    public void setFont(Context context, TextView textView, int fontValue) {
+    void setFont(Context context, TextView textView, int fontValue) {
         if (null != mFontPaths && fontValue > -1 && mFontPaths.length > fontValue) {
             textView.setPaintFlags(textView.getPaintFlags()
                     | Paint.SUBPIXEL_TEXT_FLAG

@@ -9,27 +9,45 @@ android {
     defaultConfig {
         minSdkVersion globalConf.androidMinSdkVersion
         targetSdkVersion globalConf.androidTargetSdkVersion
-        versionCode VersionCodeReader.getVersionCode()
-        versionName globalConf.versionName
+        versionCode 6
+        versionName "2.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
 
+    signingConfigs {
+        release {
+            storeFile file("releasekey.jks")
+            storePassword "deepu107"
+            keyAlias "Mausam"
+            keyPassword "deepu107"
+        }
+    }
+
     productFlavors {
         stage {
             applicationId globalConf.androidApplicationIdStage
-            buildConfigField("String", "API_KEY", "\"http://54.169.234.17:8083\"")
+            buildConfigField("String", "API_KEY", "\"5c60fb9032d14446b4620959170106\"")
         }
         production {
             applicationId globalConf.androidApplicationIdProduction
-            buildConfigField("String", "API_KEY", "\"http://54.169.234.17:8083\"")
+            buildConfigField("String", "API_KEY", "\"5c60fb9032d14446b4620959170106\"")
         }
     }
 
     buildTypes {
         release {
+            multiDexEnabled false
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            multiDexEnabled true
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -52,17 +70,18 @@ dependencies {
     compile dependencies.butterknife
     annotationProcessor dependencies.butterknifeCompiler
 
+    // glide library
+    compile dependencies.glide
+
+    // google play services location
+    compile dependencies.playServicesLocation
+
+    // Mp Android Chat
+    compile dependencies.mpAndroidChart
+
     //support libraries
     compile dependencies.cardview
     compile dependencies.recyclerview
-
-    // To use parcelable instead serializable to improve data transfer between components
-//    apt dependencies.parceler
-    compile dependencies.parcelerApi
-
-    // TODO: place in dependencies
-    // To show smooth progressbar while loading
-    compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0'
 
     // To handle 65k method issue
     compile dependencies.multidex
@@ -72,13 +91,5 @@ dependencies {
     androidTestCompile(dependencies.espressoCore, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-}
-
-class VersionCodeReader {
-    static def getVersionCode() {
-        def defaultVersion = 1
-        def code = System.env.BUILD_NUMBER != null ? Integer.parseInt(System.env.BUILD_NUMBER) : defaultVersion
-        println code == defaultVersion ? "BUILD_NUMBER not found. Falling back to default version code:$defaultVersion" : "VersionCode is set to $code"
-        return code
-    }
+    compile 'javax.annotation:javax.annotation-api:1.2'
 }

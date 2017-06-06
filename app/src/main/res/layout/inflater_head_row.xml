@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/dp_16"
+    android:paddingRight="@dimen/dp_16"
+    android:background="@drawable/summary_bottom_cover">
+
+    <ImageView
+        android:id="@+id/current_degree_one_iv"
+        android:layout_width="wrap_content"
+        android:src="@mipmap/hourly_temperature_1"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/current_degree_two_iv"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/current_degree_one_iv"
+        android:layout_toEndOf="@+id/current_degree_one_iv"
+        android:src="@mipmap/hourly_temperature_1"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/current_degree_iv"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/current_degree_two_iv"
+        android:layout_toEndOf="@+id/current_degree_two_iv"
+        android:src="@mipmap/hourly_temperature_symbol"
+        android:layout_height="wrap_content" />
+
+    <com.sinha.android.widgets.customfont.CustomTextView
+        android:id="@+id/current_min_max_tv"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/current_degree_one_iv"
+        android:layout_marginTop="@dimen/dp_8"
+        android:textSize="@dimen/sp_16"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/current_icon_iv"
+        android:layout_below="@+id/current_min_max_tv"
+        android:layout_width="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_17"
+        android:layout_height="@dimen/dp_20" />
+
+    <com.sinha.android.widgets.customfont.CustomTextView
+        android:id="@+id/current_desc_tv"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/current_min_max_tv"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/current_icon_iv"
+        android:layout_toEndOf="@+id/current_icon_iv"
+        android:layout_marginTop="@dimen/dp_17"
+        android:layout_marginLeft="@dimen/dp_11"
+        android:layout_marginStart="@dimen/dp_11"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"
+        app:typeface="helveticaNeue_thin" />
+
+    <com.sinha.android.widgets.customfont.CustomTextView
+        android:id="@+id/current_updated_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/current_icon_iv"
+        android:paddingBottom="@dimen/dp_17"
+        android:paddingTop="@dimen/dp_8"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_12"
+        app:typeface="helveticaNeue_thin" />
+
+</RelativeLayout>

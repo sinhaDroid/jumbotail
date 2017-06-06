@@ -8,8 +8,8 @@ ext {
     androidMinSdkVersion = 16
     androidTargetSdkVersion = 25
 
-    androidApplicationIdStage = "com.sinhadroid.jumbotail.stage"
-    androidApplicationIdProduction = "com.sinhadroid.jumbotail"
+    androidApplicationIdStage = "only.sinha.android.mausam.app.stage"
+    androidApplicationIdProduction = "only.sinha.android.mausam.app"
 }
 
 buildscript {
@@ -27,6 +27,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 

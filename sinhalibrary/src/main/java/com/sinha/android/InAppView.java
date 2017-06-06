@@ -1,7 +1,7 @@
 package com.sinha.android;
 
 /**
- * Created by Jeeva on 16/10/14.
+ * Created by Sinha on 16/10/14.
  */
 public interface InAppView extends View {
 

@@ -1,13 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sinhadroid.jumbotail.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/toolbar_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@color/weather_info_dark_bg"
+            android:minHeight="?attr/actionBarSize">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/transparent"
+                android:fitsSystemWindows="true"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            <com.sinha.android.widgets.customfont.CustomTextView
+                android:id="@+id/cityName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp_4"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_16"
+                app:typeface="roboto_condensed_bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cityName"
+                android:layout_centerHorizontal="true">
+
+                <com.sinha.android.widgets.customfont.CustomTextView
+                    android:id="@+id/currentTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:layout_marginRight="@dimen/dp_4"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_12"
+                    app:typeface="roboto_condensed_bold" />
+
+                <com.sinha.android.widgets.customfont.CustomTextView
+                    android:id="@+id/timezone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_toEndOf="@+id/currentTime"
+                    android:layout_toRightOf="@+id/currentTime"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_12"
+                    app:typeface="roboto_condensed_bold" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/entryViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="?attr/actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/transparent"
+        android:fitsSystemWindows="true">
+
+        <FrameLayout
+            android:id="@+id/activity_menu_fl_navbar_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

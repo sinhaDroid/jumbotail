@@ -26,5 +26,6 @@ public class CustomTextView extends AppCompatTextView {
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomTextView);
         CustomFont.getInstance().setFont(context, this, a.getInt(R.styleable.CustomTextView_typeface, -1));
+        a.recycle();
     }
 }

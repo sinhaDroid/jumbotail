@@ -14,7 +14,7 @@ import com.sinha.android.R;
 import com.sinha.android.widgets.customfont.CustomTextView;
 
 /**
- * Created by Jeeva on 17/7/16.
+ * Created by Sinha on 17/7/16.
  */
 public class DropCapsTextView extends CustomTextView {
 

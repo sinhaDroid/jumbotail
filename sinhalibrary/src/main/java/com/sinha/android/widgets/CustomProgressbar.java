@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.sinha.android.R;
 
-
 public class CustomProgressbar extends Dialog {
 
     private static CustomProgressbar customProgressbar;
