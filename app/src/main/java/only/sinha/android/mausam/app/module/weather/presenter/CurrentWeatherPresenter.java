@@ -10,4 +10,6 @@ public interface CurrentWeatherPresenter {
     void onViewCreated(Bundle bundle);
 
     void onRefresh();
+
+    void refreshAllViews();
 }

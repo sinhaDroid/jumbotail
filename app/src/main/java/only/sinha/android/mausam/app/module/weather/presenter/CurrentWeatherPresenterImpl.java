@@ -84,42 +84,17 @@ public class CurrentWeatherPresenterImpl implements CurrentWeatherPresenter {
 
     @Override
     public void onRefresh() {
-        callWeatherApi(cityName);
-    }
 
-    private void callWeatherApi(String cityName) {
         if (Mausam.getInstance().hasNetworkConnection()) {
-            mCurrentWeatherView.showProgressbar();
 
-            MyWebService.getInstance().callLocalWeatherApi(
-                    new LocalWeatherRequest.Builder()
-                            .setQ(cityName)
-                            .setNum_of_days(9)
-                            .setTp("1")
-                            .setShowlocaltime("yes")
-                            .build()
-            ).enqueue(new MausamCallBack<LocalWeatherResponse>() {
-                @Override
-                public void onResponse(Call<LocalWeatherResponse> call, Response<LocalWeatherResponse> response) {
-
-                    if (response.isSuccessful()) {
-                        handleResponse(response.body());
-                        mCurrentWeatherView.dismissProgressbar();
-                    } else {
-                        mCurrentWeatherView.showMessage(response.message());
-                        mCurrentWeatherView.dismissProgressbar();
-                    }
-                }
-            });
+            MyWebService.getInstance().callWeatherApi(Constants.IntentActions.ACTION_REFRESH, cityName);
         } else {
             mCurrentWeatherView.showMessage(R.string.no_internet_connection_available);
-            mCurrentWeatherView.dismissProgressbar();
         }
     }
 
-    private void handleResponse(LocalWeatherResponse response) {
-
-        LocalWeatherDataHandler.getInstance().saveWeatherByCityName(cityName, response);
+    @Override
+    public void refreshAllViews() {
 
         // set All Views
         setAllViews(LocalWeatherDataHandler.getInstance().getWeatherByCityName().get(cityName));

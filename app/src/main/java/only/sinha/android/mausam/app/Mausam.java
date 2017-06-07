@@ -51,8 +51,10 @@ public class Mausam extends Application {
         // Initializing custom fonts
         initCustomFonts();
 
-        // start the service
-        registerAlarm(this);
+        if (MausamDataHandler.getInstance().isFirstTime()) {
+            // start the service
+            registerAlarm(this);
+        }
     }
 
     @Override
@@ -81,7 +83,7 @@ public class Mausam extends Application {
     }
 
     public static void registerAlarm(Context context) {
-        Intent intent = new Intent(context, MausamService.class);
+        Intent intent = new Intent(context, BroadcastService.class);
         intent.putExtra(Constants.BundleKeys.CITY_KEY, MausamDataHandler.getInstance().getCurrentCityName());
 
         PendingIntent alarmIntent = PendingIntent.getBroadcast(context, Constants.CODE.REQUEST_CODE, intent, 0);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="only.sinha.android.mausam.app">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -25,6 +26,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".module.splash.SplashActivity"
+            android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +43,7 @@
                 <data
                     android:host="play.google.com"
                     android:pathPrefix="/store/apps/details?id=only.sinha.android.mausam.app&amp;hl=en/Bengaluru"
-                    android:scheme="https" />
+                    android:scheme="https" />{
             </intent-filter>
         </activity>
         <activity
@@ -49,8 +51,9 @@
             android:screenOrientation="portrait" />
 
         <receiver
-            android:name=".MausamService"
-            android:exported="false" />
+            android:name="only.sinha.android.mausam.app.BroadcastService"
+            android:exported="false">
+        </receiver>
     </application>
 
 </manifest>

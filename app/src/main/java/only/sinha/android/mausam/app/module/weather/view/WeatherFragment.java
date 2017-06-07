@@ -1,10 +1,14 @@
 package only.sinha.android.mausam.app.module.weather.view;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +28,7 @@ import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import butterknife.BindView;
+import only.sinha.android.mausam.app.BroadcastService;
 import only.sinha.android.mausam.app.Constants;
 import only.sinha.android.mausam.app.R;
 import only.sinha.android.mausam.app.module.AppSnippet;
@@ -31,8 +36,10 @@ import only.sinha.android.mausam.app.module.adapter.DailyAdapter;
 import only.sinha.android.mausam.app.module.adapter.HourlyAdapter;
 import only.sinha.android.mausam.app.module.common.MausamFragment;
 import only.sinha.android.mausam.app.module.common.widget.SunRiseSetView;
+import only.sinha.android.mausam.app.module.offline.LocalWeatherDataHandler;
 import only.sinha.android.mausam.app.module.weather.presenter.CurrentWeatherPresenter;
 import only.sinha.android.mausam.app.module.weather.presenter.CurrentWeatherPresenterImpl;
+import only.sinha.android.mausam.app.webservice.MyWebService;
 
 /**
  * Created by deepanshu on 1/6/17.
@@ -159,6 +166,31 @@ public class WeatherFragment extends MausamFragment implements CurrentWeatherVie
             }
         });
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // register the broadcast
+        IntentFilter intentFilter = new IntentFilter(Constants.IntentActions.ACTION_REFRESH);
+
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, intentFilter);
+    }
+
+    @Override
+    public void onStop() {
+        // unregister the broadcast
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(broadcastReceiver);
+
+        super.onStop();
+    }
+
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            mCurrentWeatherPresenter.refreshAllViews();
+        }
+    };
 
     private void setInitialViews() {
         mNestedScrollView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.weather_info_dark_bg));

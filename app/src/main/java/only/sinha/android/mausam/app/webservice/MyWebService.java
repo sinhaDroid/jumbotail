@@ -1,10 +1,12 @@
 package only.sinha.android.mausam.app.webservice;
 
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import com.sinha.android.ExceptionTracker;
 import com.sinha.android.converter.JacksonConverterFactory;
 
@@ -13,9 +15,19 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import only.sinha.android.mausam.app.Config;
+import only.sinha.android.mausam.app.Constants;
+import only.sinha.android.mausam.app.Mausam;
+import only.sinha.android.mausam.app.module.model.request.LocalWeatherRequest;
+import only.sinha.android.mausam.app.module.model.response.geocode.GeoCodeResponse;
 import only.sinha.android.mausam.app.module.model.response.localweather.LocalWeatherResponse;
+import only.sinha.android.mausam.app.module.offline.LocalWeatherDataHandler;
+import only.sinha.android.mausam.app.module.offline.MausamDataHandler;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
+
+import static only.sinha.android.mausam.app.Constants.*;
 
 public class MyWebService {
 
@@ -75,24 +87,6 @@ public class MyWebService {
         return null;
     }
 
-    public <T> T getObjectFromJson(String json, Class<T> classType) {
-        try {
-            return mObjectMapper.readValue(json, classType);
-        } catch (Exception e) {
-            ExceptionTracker.track(e);
-        }
-        return null;
-    }
-
-    public <T> T getObjectFromJson(String json, CollectionType classType) {
-        try {
-            return mObjectMapper.readValue(json, classType);
-        } catch (Exception e) {
-            ExceptionTracker.track(e);
-        }
-        return null;
-    }
-
     public <T> T getObjectFromJson(String json, TypeReference<T> typeReference) {
         try {
             return mObjectMapper.readValue(json, typeReference);
@@ -102,16 +96,38 @@ public class MyWebService {
         return null;
     }
 
-    public <T> T getObjectFromObject(Object object, Class<T> classType) {
-        try {
-            return (T) mObjectMapper.convertValue(object, Map.class);
-        } catch (Exception e) {
-            ExceptionTracker.track(e);
-        }
-        return null;
+    public Call<LocalWeatherResponse> callLocalWeatherApi(Map<String, String> map) {
+        initMausamService(Config.API_BASE_URL);
+        return mSportsCafeService.callLocalWeatherApi(map);
     }
 
-    public Call<LocalWeatherResponse> callLocalWeatherApi(Map<String, String> map) {
-        return mSportsCafeService.callLocalWeatherApi(map);
+    public Call<GeoCodeResponse> callGeoApi(String latLng) {
+        initMausamService(Config.GEO_BASE_URL);
+        return mSportsCafeService.callGeoApi(latLng, true);
+    }
+
+    public void callWeatherApi(final String intentActions, final String cityName) {
+
+        MyWebService.getInstance().callLocalWeatherApi(
+                new LocalWeatherRequest.Builder()
+                        .setQ(cityName)
+                        .setNum_of_days(9)
+                        .setTp("1")
+                        .setShowlocaltime("yes")
+                        .build()
+        ).enqueue(new MausamCallBack<LocalWeatherResponse>() {
+            @Override
+            public void onResponse(Call<LocalWeatherResponse> call, Response<LocalWeatherResponse> response) {
+
+                if (response.isSuccessful()) {
+                    LocalWeatherDataHandler.getInstance().saveWeatherByCityName(cityName, response.body());
+
+                    LocalBroadcastManager.getInstance(Mausam.getInstance()).sendBroadcast(new Intent(intentActions));
+                } else {
+
+                    callWeatherApi(intentActions, "Bengaluru");
+                }
+            }
+        });
     }
 }

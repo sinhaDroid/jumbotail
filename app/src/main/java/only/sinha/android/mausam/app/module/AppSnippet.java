@@ -1,6 +1,9 @@
 package only.sinha.android.mausam.app.module;
 
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.format.Time;
+import android.text.style.MaskFilterSpan;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,7 +11,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import only.sinha.android.mausam.app.BroadcastService;
 import only.sinha.android.mausam.app.Constants;
+import only.sinha.android.mausam.app.Mausam;
 import only.sinha.android.mausam.app.R;
 
 /**
@@ -290,7 +295,7 @@ public class AppSnippet {
         return calendar.get(Calendar.MONTH) + 1 + "/" + calendar.get(Calendar.DATE);
     }
 
-    public static Date parseDate(String time, String timeFormat) throws ParseException {
+    private static Date parseDate(String time, String timeFormat) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat(timeFormat, Locale.getDefault());
         return dateFormat.parse(time);
     }

@@ -21,10 +21,17 @@ public interface Constants {
 
     public interface BundleKeys {
         String CITY_KEY = "cityKey";
+        String LAT_LNG = "latLng";
     }
 
     public interface CODE {
         int REQUEST_CODE = 0;
+    }
+
+    public interface IntentActions {
+        String ACTION_SPLASH = "only.sinha.android.mausam.app.module.splash";
+        String ACTION_REFRESH = "only.sinha.android.mausam.app.module.weather.view";
+        String ACTION_SERVICE = "only.sinha.android.mausam.app";
     }
 }
 
