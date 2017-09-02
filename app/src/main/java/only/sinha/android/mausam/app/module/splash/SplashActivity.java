@@ -19,6 +19,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -197,7 +198,7 @@ public class SplashActivity extends MausamActivity implements GoogleApiClient.Co
         /*
         * Setting up the runtime permission. We should implement when we target  Android Marshmallow (API 23) as a target Sdk.
         * */
-        requestPermission(PERMISSION_REQUEST_CODE_LOCATION, getApplicationContext(), this);
+        requestPermission(PERMISSION_REQUEST_CODE_LOCATION, this);
 
         try {
 
@@ -265,7 +266,7 @@ public class SplashActivity extends MausamActivity implements GoogleApiClient.Co
 
     }
 
-    public static void requestPermission(int perCode, Context context, Activity _a) {
+    public static void requestPermission(int perCode, Activity _a) {
 
         String fineLocationPermissionString = Manifest.permission.ACCESS_FINE_LOCATION;
         String coarseLocationPermissionString = Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -287,7 +288,7 @@ public class SplashActivity extends MausamActivity implements GoogleApiClient.Co
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     callGooglePlayServicesApi();
                 } else {
-                    requestPermission(PERMISSION_REQUEST_CODE_LOCATION, getApplicationContext(), this);
+                    requestPermission(PERMISSION_REQUEST_CODE_LOCATION, this);
                 }
                 break;
         }
@@ -341,6 +342,16 @@ public class SplashActivity extends MausamActivity implements GoogleApiClient.Co
 
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CHECK_SETTINGS){
+            Toast.makeText(this, "Setting has changed...", Toast.LENGTH_SHORT).show();
+            requestPermission(PERMISSION_REQUEST_CODE_LOCATION, this);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 

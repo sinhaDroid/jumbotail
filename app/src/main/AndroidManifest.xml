@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="only.sinha.android.mausam.app">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -42,8 +41,8 @@
 
                 <data
                     android:host="play.google.com"
-                    android:pathPrefix="/store/apps/details?id=only.sinha.android.mausam.app&amp;hl=en/Bengaluru"
-                    android:scheme="https" />{
+                    android:pathPrefix="/store/apps/details?id=only.sinha.android.mausam.app/Bengaluru"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity
@@ -52,8 +51,7 @@
 
         <receiver
             android:name="only.sinha.android.mausam.app.BroadcastService"
-            android:exported="false">
-        </receiver>
+            android:exported="false" />
     </application>
 
 </manifest>

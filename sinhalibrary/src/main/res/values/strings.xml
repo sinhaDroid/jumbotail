@@ -1,8 +1,3 @@
 <resources>
-    <string name="app_name">Sinha Library</string>
-    <!-- Tag Flow Layout-->
-    <string name="gravity_left">left</string>
-    <string name="gravity_center">center</string>
-    <string name="gravity_right">right</string>
-    <string name="no_internet_connection_available">No internet connection available</string>
+    <string name="app_name">SinhaLibrary</string>
 </resources>

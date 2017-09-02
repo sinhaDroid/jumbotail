@@ -189,6 +189,7 @@ public class WeatherFragment extends MausamFragment implements CurrentWeatherVie
         public void onReceive(Context context, Intent intent) {
 
             mCurrentWeatherPresenter.refreshAllViews();
+            dismissProgressbar();
         }
     };
 
@@ -391,7 +392,6 @@ public class WeatherFragment extends MausamFragment implements CurrentWeatherVie
 
     @Override
     public void showProgressbar() {
-        super.showProgressbar();
         if (!mSwipeRefreshLayout.isRefreshing()) {
             mSwipeRefreshLayout.setRefreshing(true);
         }
@@ -399,7 +399,6 @@ public class WeatherFragment extends MausamFragment implements CurrentWeatherVie
 
     @Override
     public void dismissProgressbar() {
-        super.dismissProgressbar();
         if (mSwipeRefreshLayout.isRefreshing()) {
             mSwipeRefreshLayout.setRefreshing(false);
         }
