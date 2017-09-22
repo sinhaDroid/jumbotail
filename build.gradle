@@ -10,8 +10,7 @@ ext {
     androidMinSdkVersion = 16
     androidTargetSdkVersion = androidCompileSdkVersion
 
-    androidApplicationIdStage = "only.sinha.android.mausam.app.stage"
-    androidApplicationIdProduction = "only.sinha.android.mausam.app"
+    androidApplicationId = "only.sinha.android.mausam.app"
 }
 
 buildscript {

@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Mausam</string>
     <string name="play_store_url"><![CDATA[https://play.google.com/store/apps/details?id=only.sinha.android.mausam.app&hl=en]]></string>
     <string name="hourly">Hourly</string>
     <string name="daily">Daily</string>
